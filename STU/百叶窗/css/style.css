@@ -1,0 +1,52 @@
+*{
+	margin: 0px;
+	padding: 0px;
+	/*列表的序列号样式*/
+	list-style: none;
+	
+}
+body{
+	background-image: url(../img/triangles.png);
+}
+
+.container{
+	width: 800px;
+	height: 320px;
+	margin: 100px auto;
+	/*溢出当前元素的部分隐藏*/
+	overflow: hidden;
+}
+
+/*派生选择器 空格隔开*/
+.container ul li{
+	width: 160px;
+	position: relative;
+	float: left;
+	-webkit-transition: 0.5s;
+}
+/*鼠标长按事件*/
+.container ul:active li{
+	width: 40px;
+	
+}
+.container ul li:active{
+	width: 640px;
+}
+
+
+.img-title{
+	width: 640px;
+	height: 30px;
+	/*要实现在父元素中的绝对定位，父元素必须为相对定位*/
+	position: absolute;
+	background: rgba(0,0,0,0.5);
+	left: 0;
+	bottom: 0;
+}
+.img-title a{
+	/*字体颜色*/
+	color: white;
+	font-size: 16px;
+	padding-left:20px ;
+}
+
