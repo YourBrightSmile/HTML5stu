@@ -1,0 +1,56 @@
+*{
+	margin: 0;
+	padding: 0;
+}
+body{
+	background: black;
+}
+
+.container{
+	width: 464px;
+	height: 569px;
+	position: relative;
+	margin: 20px auto;
+}
+
+.flagpole{
+	width: 31px;
+	height: 494px;
+	background: rgb(85,85,85);
+	position: absolute;
+	margin-top: 20px;
+	margin-left: 75px;
+}
+.flag{
+	width: 300px;
+	height: 200px;
+	background: white;
+	position: absolute;
+	margin-left: 105px;
+	margin-top: 30px;
+	transition: 1s;
+}
+.flag:hover {
+	transform: translateY(200px);
+	background-color: red;
+}
+.flag:hover .img {
+	width: 112px;
+	height: 112px;
+	position: absolute;
+	margin-top: -100px;
+	margin-left: 90px;
+	z-index: 2;
+	background-image: url(../img/成魔.jpg);
+	background-size: cover;
+}
+
+.flag .circle{
+	width: 100px;
+	height: 100px;      
+	background-color:red;      
+	border-radius: 50%;
+	position: relative;
+	margin-top:40px; 
+	margin-left:90px;
+}

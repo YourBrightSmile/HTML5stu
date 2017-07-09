@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title>freestyle</title>
+		<style>
+			/*
+			 文档流：记录元素进入页面的顺序和位置
+			* 	顺序：X轴从左至右，Y轴从上至下
+			
+			选择器
+			 	直接选择,直接使用标签名 比如 a{}
+			 	#选择id
+			 	.选择class
+			 		id唯一存在，class可以多个
+			display:
+				block 块级元素不能在一行
+				inline 行级元素不支持宽高的设置,背景大小由文本内容撑开，在一行内显示
+				inline-block 行内块级元素，支持所有css属性在一行内显示
+			 * */
+			#box{
+				/*高度：单位为像素
+				 http://www.w3school.com.cn/cssref/css_units.asp
+				 * */
+				height: 200px;	
+				width:  200px;
+				/*背景颜色*/				
+				background-color:green ;
+				/*元素类型：块型 
+				 特点：支持所有css属性，占有一行的空间，不设置宽度时默认为一行
+				 * */
+				display: block;
+				
+			}
+			.demo{
+				width: 100px;
+				height: 100px;
+				background: black;
+			}	
+			
+			
+			a{
+				width: 100px;
+				height: 100px;
+				/*行级元素
+				 行级元素不支持宽高的设置,背景大小由文本内容撑开，在一行内显示
+				 
+				 * */
+				display: inline;
+				/*可以设置成display: inline-block;*/
+				/*使用inline 此元素会被显示为内联元素，元素前后没有换行符。*/
+				background: rgb(222,255,0);
+				
+				/*垂直位置对齐*/
+				vertical-align: top;
+			}
+			img{
+				width: 200px;
+				/*行内块级元素，支持所有css属性在一行内显示*/
+				display: inline-block;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="box">
+			
+		</div>
+		
+		<div class="demo">
+						
+		</div>
+		<a href="http://www.acfun.cn">acfun</a>
+		<img src="img/HBuilder.png" />
+	</body>
+</html>

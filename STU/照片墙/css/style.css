@@ -1,0 +1,88 @@
+/* 通配符*:代表所有元素*/
+*{
+	/*清除默认的外边距和内边距*/
+	margin: 0;
+	padding: 0;
+	
+}
+html,body,.bg{
+	
+	width: 100%;
+	height: 100%;
+	
+}
+.bg{
+	position: fixed;
+	z-index: -1;
+	top:0;
+}
+
+.container{
+	width:1000px;
+	margin: 20px auto;
+}
+
+.pic{
+	width: 180px;
+	margin-left: 45px;
+	margin-top: 30px;
+	background: white;
+	padding: 5px;
+	/*阴影
+	 4个参数
+	 	X轴距离 Y轴距离 影子自身宽度
+	 	rgba 中的第4个参数是透明度 取值0-1
+	 
+	 * */
+	box-shadow:10px 10px 3px rgba(50,50,50,0.7) ;
+	/*谷歌和safari兼容 */
+	-webkit-transition: 0.2s;
+	/*火狐兼容*/
+	-moz-transition:0.4s;
+	/*IE兼容*/
+	-ms-transition: 0.4s;
+	transition:0.4s;
+	position: relative;
+}
+.pic:hover{
+	
+	-webkit-transform: rotate3d(0,0,0,0deg) scale(1.2);
+	box-shadow: 10px 10px 3px rgba(50,50,50,1);
+	z-index: 2;
+	
+}
+
+.pic1{
+	/*
+	 * rotate3d
+	 * 	第4个参数为旋转的度数
+	 * 	前面3个为绕X，Y，Z轴旋转 第4个参数的倍数
+	 */
+	transform: rotate3d(0.6,5,0.3,50deg);
+	-webkit-transform: rotate3d(0.5,2,0.3,180deg);
+}
+.pic2{
+	-webkit-transform: rotate3d(0,0,2,40deg);
+}
+
+.pic3{
+	-webkit-transform: rotate3d(0,0,1,90deg);
+}
+
+.pic4{
+	-webkit-transform: rotate3d(0,0,-1,60deg);
+}
+
+.pic5{
+	-webkit-transform: rotate3d(0.5,2,0.3,30deg);
+}
+.pic6{
+	-webkit-transform: rotate3d(0,-1,-5,50deg);
+}
+.pic7{
+	-webkit-transform: rotate3d(0,2,11,60deg);
+}
+.pic8{
+	-webkit-transform: rotate3d(0.5,2,0.3,180deg);
+}
+

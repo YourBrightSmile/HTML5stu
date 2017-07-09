@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		
+		<style>
+			
+			div{
+				width: 100px;
+				height: 100px;
+				
+				background: red;
+				position: relative;
+				/*top距离顶部位置  left距离左边位置*/
+				top: 100px;
+				left: 300px;
+				
+				/*过渡
+				 	时间（必须）， 速度曲线（匀速、变速。。）
+				 * */
+				/*
+				 	tansition
+				 	-webkit-tanssition 处理兼容问题
+				 * */
+				-webkit-transition: 2s linear;
+			}
+			/*悬浮时间*/
+			div:hover{
+				/*向2D或3D转变*/
+				/*
+				 * transform
+				 * -webkit-transform 处理兼容问题
+				 */
+				-webkit-transform: matrix(10,20,30,40,50,50);
+				background:blueviolet;
+			}
+		</style>
+		
+	</head>
+	<body>
+		<div></div>
+	</body>
+</html>

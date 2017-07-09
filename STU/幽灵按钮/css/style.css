@@ -1,0 +1,123 @@
+*{
+	margin: 0;
+	padding: 0;
+}
+body{
+	background: #233;
+	width: 900px;
+	height: 300px;
+	margin: 100px auto;
+}
+
+.link{
+	width: 270px;
+	/*百分比继承外层元素，这里高度是与外层元素一样高*/
+	height: 100%;
+	float: left;
+	margin-left: 22px;
+	
+}
+
+.icon{
+	display: block;
+	width: 200px;
+	height: 200px;
+	margin: 20px auto;
+	-webkit-transition: 5s;
+}
+
+.icon:hover{
+	-webkit-transform: rotateZ(3000deg) scale(1.2) ;
+}
+
+.link-play .icon{
+	/*
+	 * no-repea 	center center
+	 * 不重复平铺	X轴居中 Y轴居中
+	 * 后面两个参数设置的是background-position
+	 */
+	
+	background: url(../img/play.png) no-repeat center center;
+}
+.link-mission .icon{
+	background: url(../img/mission.png) no-repeat center center;
+}
+
+.link-touch .icon{
+	background: url(../img/touch.png) no-repeat center center;
+}
+
+.container a{
+	position: relative;
+	display: block;
+	width: 200px;
+	height: 40px;
+	margin: auto;
+	border: 2px solid white;
+	color: lawngreen;
+	/*字体粗细*/
+	font-weight: bolder;
+	/*行高 可设置单行文本居中*/
+	line-height: 40px;
+	padding-left: 20px;
+	background: url(../img/allow.png) no-repeat 140px center;
+	/*使元素内容往里挤压 */
+	box-sizing: border-box;
+	-webkit-transition: 0.4s ease;
+}
+.container a:hover{
+	background-position-x: 160px;
+	
+}
+
+.line{
+	background: white;
+	position: absolute;
+	-webkit-transition: 0.4s;
+	
+}
+
+.line-top{
+	height: 2px;
+	width: 0;
+	left: -100%;
+	top:-2px
+}
+a:hover .line-top{
+	width: 100%;
+	left: 0;
+}
+.line-left{
+	width: 2px;
+	height: 0;
+	bottom: -100%;
+	left:-2px;
+}
+a:hover .line-left{
+	height: 100%;
+	bottom: 0;
+}
+
+.line-bottom{
+	width: 0;
+	height: 2px;
+	right: -100%;
+	bottom: -2px;
+}
+
+a:hover .line-bottom{
+	width: 100%;
+	right: 0;
+}
+
+.line-right{
+	height: 0;
+	width:2px;
+	top:-100%;
+	right: -2px;
+}
+
+a:hover .line-right{
+	height: 100%;
+	top: 0;
+}
