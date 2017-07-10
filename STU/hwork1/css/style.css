@@ -29,9 +29,24 @@ body{
 	margin-left: 105px;
 	margin-top: 30px;
 	transition: 1s;
+	-webkit-transition: 3s;
 }
+
+.flag .circle{
+	width: 100px;
+	height: 100px;      
+	background-color:red;      
+	border-radius: 50%;
+	position: relative;
+	margin-top:40px; 
+	margin-left:90px;
+	
+	/*设置其居中可以使用绝对定位，margin:auto 并将top right bottom left都设为0 */
+}
+
 .flag:hover {
 	transform: translateY(200px);
+	-webkit-transform: translateY(200px);
 	background-color: red;
 }
 .flag:hover .img {
@@ -45,12 +60,5 @@ body{
 	background-size: cover;
 }
 
-.flag .circle{
-	width: 100px;
-	height: 100px;      
-	background-color:red;      
-	border-radius: 50%;
-	position: relative;
-	margin-top:40px; 
-	margin-left:90px;
-}
+
+
