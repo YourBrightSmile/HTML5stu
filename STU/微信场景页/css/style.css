@@ -1,0 +1,285 @@
+*{
+	margin: 0;
+	padding: 0;
+}
+html,body,.page-wrapper,.page{
+	width: 100%;
+	height: 100%;
+}
+
+body{
+	overflow: hidden;
+}
+.page-wrapper{
+	position: relative;
+	z-index: 1;
+}
+.page{
+	position: absolute;
+	
+}
+.page-1{
+	background: rgb(27,127,221);
+	z-index: 4;
+}
+.page-2{
+	background: black;
+	z-index: 3;
+	
+}
+.page-3{
+	background: lightgreen;
+	z-index: 2;
+}
+.page-4{
+	background: rgb(27,127,221);
+	z-index: 1;
+}
+
+.hidden{
+	display: none;
+}
+
+/*音乐和箭头*/
+.music{
+	width: 20%;
+	position: fixed;
+	top: 2%;
+	right: 2%;
+	z-index: 2;
+}
+.arrow{
+	width: 20%;
+	bottom: 3%;
+	position: fixed;
+	margin:auto;
+	left: 0;
+	right: 0;
+	z-index: 2;
+}
+
+.page img{
+	position: absolute;
+	
+}
+/*第一页*/
+.page-1 .title{
+	width: 60%;
+	top: 10%;
+	margin: auto;
+	left: 0;
+	right: 0;
+}
+
+.page-1 .building{
+	width: 100%;
+	bottom: 0;
+}
+.page-1 .cloud{
+	width: 100%;
+	height: 100%;
+}
+
+.page-1 .flower-1{
+	width: 20%;
+	left: 10%;
+	top: 20%;
+}
+.page-1 .flower-2{
+	width: 20%;
+	top: 20%;
+	right: 15%;
+}
+.page-1 .flight{
+	width: 90%;
+	bottom: 30%;
+	margin: auto;
+	left: 0;
+	right: 0;
+}
+
+/*第二页*/
+.page-2 .bg{
+	width: 100%;
+	height: 100%;
+	
+}
+.page-2 .title-1{
+	width: 70%;
+	top: 40%;
+	margin: auto;
+	left: 0;
+	right: 0;
+	
+}
+
+.page-2 .title-2{
+	width: 70%;
+	top: 60%;
+	margin: auto;
+	left: 0;
+	right: 0;
+	
+}
+
+.page-2 .star{
+	width: 70%;
+	right: 0;
+	top: 0;
+	
+}
+
+/*第三页*/
+.page-3 .bg{
+	width: 100%;	
+	height: 100%;
+	
+}
+
+.page-3 .stop{
+	width: 100%;
+	bottom: 0;
+	
+}
+.page-3 .worker-1{
+	width: 30%;
+	bottom: 8%;
+	right: -30%;
+}
+.page-3 .bus{
+	width: 70%;
+	bottom: 5%;
+}
+
+.page-3 .title-1{
+	width: 30%;
+	top: 10%;
+	
+}
+
+.page-3 .title-2{
+	width: 40%;
+	top: 20%;
+}
+
+.page-3 .bg-2{
+	width: 100%;
+	height: 100%;
+	
+}
+
+.page-3 .wall{
+	height: 70%;
+	right: 0;
+	bottom: 0;
+}
+
+.page-3 .worker-2{
+	width: 30%;
+	right: 13%;
+	top: 16%;
+
+}
+
+.page-3 .space{
+	width: 28%;
+	top: 20%;
+	left: 10%;
+}
+
+.page-3 .where{
+	bottom: 20%;
+	width: 60%;	
+	
+}
+
+/*第四页*/
+.page-4 .bg{
+	width: 100%;
+	height: 100%;
+	
+}
+
+.page-4 .title{
+	width: 40%;
+	top: 20%;
+	right: 0;
+}
+
+.page-4 .guide{
+	width: 50%;
+	top: 40%;
+	left: 25%;
+}
+.page-4 .off,.page-4 .on{
+	height: 70%;
+	left: 5%;
+	bottom: 0;
+	z-index: 1;
+}
+
+.page-4 .on{
+	opacity: 0;
+}
+
+.page-4 .bg-2{
+	width: 100%;
+	height: 100%;
+	//opacity: 0;
+}
+.page-4 .know{
+	width: 50%;
+	left: 25%;	
+	top: 30%;
+	opacity: 0;
+}
+
+.page-4 .flowers{
+	width: 35%;
+	right: 5%;
+	bottom: -1%;
+	opacity: 0;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

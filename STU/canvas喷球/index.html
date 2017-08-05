@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8" />
+		<title></title>
+		<style>
+			* {
+				margin: 0;
+				padding: 0;
+			}
+		</style>
+	</head>
+
+	<body>
+
+		<!--canvas 画布标签-->
+		<canvas id="canvas"></canvas>
+		<script>
+			var canvas = document.getElementById("canvas");
+			//设置画布的宽高样式
+			canvas.width = window.innerWidth;
+			canvas.height = window.innerHeight;
+			canvas.style.background = "white";
+
+			//取出绘图工具
+			var ctx = canvas.getContext("2d");
+
+			//用来限制球的个数
+			var arr = [];
+
+			//每隔一秒钟，随机出现一个圆
+			setInterval(function() {
+				//橡皮擦
+				ctx.clearRect(0, 0, window.innerWidth, window.innerHeight);
+				var ball = new Ball(Math.random() * window.innerWidth, Math.random()*window.innerHeight);
+				//从数组的末端插入球
+				arr.push(ball);
+				//只画500个
+				if(arr.length > 100) {
+					//把头部元素从数组中弹出
+					arr.shift();
+
+				}
+				for(var i = 0; i < arr.length; i++) {
+					arr[i].drawSelf();
+					arr[i].move();
+				}
+			}, 30);
+
+			//面向对象 构造方法
+			function Ball(x, y) {
+				this.x = x;
+				this.y = y;
+				//Y轴速度向上
+				this.speedY = -10;
+				//X轴速度 -3 到3 正负方向
+				this.speedX = Math.random() * 12 - 6;
+				this.g = 0.3;
+				
+				this.color = randomColor();
+
+				this.drawSelf = function() {
+						//开启绘制路径
+						ctx.beginPath();
+						//画圆(起始x坐标，起始y坐标，半径，起始角度，结束角度，是否逆时针画圆)
+						ctx.arc(this.x, this.y, 13, 0, Math.PI * 2, true);
+						//填充样式
+						ctx.fillStyle = this.color;
+						//填充
+						ctx.fill();
+						//圆圈
+//						ctx.strokeStyle = this.color;
+//						ctx.lineWidth = 4;
+//						ctx.stroke();
+						//关闭路径
+						ctx.closePath();
+
+					}
+				//运动方法
+				this.move = function() {
+					this.y += this.speedY;
+					this.x += this.speedX;
+					this.speedY += this.g;
+					if(this.y >= window.innerHeight) {
+						this.speedY = Math.ceil(Math.random() * (-10)) - 2;
+						this.speedX += 1.0;
+					}
+				}
+			}
+
+			function randomColor() {
+				return '#' + Math.floor(Math.random() * 16777215).toString(16);
+			}
+
+			/*			//画球
+						function draw(){
+							//开启绘制路径
+							ctx.beginPath();
+							//画圆(起始x坐标，起始y坐标，半径，起始角度，结束角度，是否逆时针画圆)
+							ctx.arc(300,200,100,0,Math.PI*2,true);
+							//填充样式
+							ctx.fillStyle = "chartreuse";
+							//填充
+							ctx.fill();
+							//关闭路径
+							ctx.closePath();
+							
+						}
+			*/
+		</script>
+	</body>
+
+</html>

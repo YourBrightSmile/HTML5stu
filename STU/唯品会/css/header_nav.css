@@ -6,6 +6,8 @@
 	text-decoration: none;
 }
 
+/*头部导航栏*/
+
 .header-nav{
 	height: 30px;
 	background-color: rgb(245,245,245);
@@ -34,12 +36,28 @@
 }
 .header-nav .nav-item span{
 	font-size: 12px;	
-	color: rgb(102,102,102,102);
+	color: rgb(102,102,102);
 }
 .header-nav .nav-item:hover a{
 	color: deeppink;
 }
 
+/*头部图片信息*/
+.header-info{
+	width:800px;
+	height:100px;
+	margin:0 auto;
+	
+}
 
+.header-info img{
+	height:100%;
+	float:right;
+	cursor:pointer;
+	
+}
+.header-info .logo{
+	float:left;
+}
 
 

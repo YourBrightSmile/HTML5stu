@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			/*
+				position:
+				 	默认定位是static，不会脱离文档流
+				 	fixed 	      固定定位，参照浏览器的位置定位会脱离文档流 不再占有空间
+				 	relative  相对定位，参照自己的初始定位，不会脱离文档流
+				 	absolute  绝对定位，参照外层元素定位，如果外层没有设置定位，根据body定位
+				 					 还会使行级元素支持宽高
+				z-index:
+					必须配合定位使用
+				 	取值范围0-99，值可以为负数
+				 	层级高的盖层级低的，有层级盖没层级的
+				 * * */
+			body{
+				height: 1000px;
+			}
+			.div1{
+				width: 25px;
+				height: 25px;
+				background: purple;
+				/*固定定位：参照浏览器的位置定位会脱离文档流 不再占有空间*/
+				position: fixed;
+				/*层级*/
+				z-index: 2;
+				
+			}
+			.div2{
+				width: 50px;
+				height: 50px;
+				background: blue;
+				/*相对定位：参照自己初始的位置定位，不会脱离文档流*/
+				position: relative;
+			}
+			.div3{
+				width: 200px;
+				height: 500px;
+				background: gold;
+				/*绝对定位：参照外层元素定位，如果外层没有设置定位，根据body定位，会脱离文档流*/
+				position: absolute;
+			}
+			.div4{
+				width: 200px;
+				height: 500px;
+				background: black;
+				/*绝对定位：参照外层元素定位，如果外层没有设置定位，根据body定位，会脱离文档流*/
+				position: absolute;
+			}
+		</style>
+		
+		
+	</head>
+	<body>
+		
+		<div class="div3"></div>
+		<div class="div1"></div>
+		<div class="div2"></div>
+		<div class="div2"></div>
+		<div class="div4"></div>
+		
+	</body>
+</html>

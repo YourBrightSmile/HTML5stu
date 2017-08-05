@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		
+	</head>
+	<body>
+		<div id="demo" class="demo"></div>
+		<div class="demo">
+			
+		</div>
+		<script>
+			//通过id获取元素
+			var demoId=document.getElementById("demo");
+			//alert("元素div:"+demoId);
+			
+			//通过class获取元素
+			var demoClass = document.getElementsByClassName("demo")
+			//浏览器开发者工具打印
+			console.log(demoClass);
+			
+			//数组可以存储任意属性值
+			var arr=["高考复习资料",1,2,3,4,"aa",true,"XX老师"];
+			//在元素中插入文本内容
+			demoClass[0].innerText=arr[7]
+			console.log(arr);
+			
+			
+			
+			
+		</script>
+	</body>
+</html>

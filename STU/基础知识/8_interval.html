@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<p>0</p>
+		<script type="text/javascript">
+			//定时器 （执行的方法，每隔多少多少毫秒执行一次）
+			var i = 0;
+			setInterval(function(){
+				i++;
+				document.getElementsByTagName("p")[0].innerText = i;
+			},1000);
+			
+		</script>
+	</body>
+</html>

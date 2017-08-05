@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<div id="demo"></div>
+		<script src="js/jquery-2.1.0.js" type="text/javascript" charset="UTF-8"  ></script>
+		<script>
+			//${选择器}.action()
+			//JQ设置css属性
+			$("#demo").css({
+				"width":"100px",
+				"height":"100px",
+				"background":"red",
+				"position":"relative",
+			});
+			//JQ自定义动画
+			$("#demo").animate({"left":"200px"},2000,"linear",function(){
+				//淡出
+				$(this).fadeOut(2000);
+				
+			});
+			
+			
+		</script>
+	</body>
+</html>

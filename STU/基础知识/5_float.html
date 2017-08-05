@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+		/*span行级元素
+		 	float：left/right/none
+		 		元素添加浮动以后，会按照指定的方向移动直到碰到外层父元素的边界或者另一个有浮动的元素
+		 		1.支持行级元素设置宽度和高度
+		 			使行级元素支持宽高：绝对定位，块，浮动
+		 		2.浮动使元素脱离文档流，不占空间
+		 		3.浮动元素层级提升半层
+		 * */
+			span{
+				width: 100px;
+				height: 100px;
+				float: left;
+			}
+			.demo1{
+				background: red;
+			}
+			.demo2{
+				background: yellow;
+			}
+			div{
+				height: 300px;
+				background: deepskyblue;
+			}
+						
+		</style>
+	</head>
+	<body>
+		
+		<span class="demo1"></span>
+		<span class="demo2"></span>
+		<div>
+			
+		</div>
+	</body>
+</html>

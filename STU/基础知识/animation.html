@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			
+			div{
+				width: 150px;
+				height: 150px;
+				background: red;
+				position: absolute;
+				left: 100px;
+				top: 100px;
+				border-radius: 50%;
+				/*动画名称*/
+				-webkit-animation-name: ball;
+				/*动画执行时间*/
+				-webkit-animation-duration: 3s;
+				/*动画速度曲线*/
+				-webkit-animation-timing-function: linear;
+				/*动画执行方向*/
+				/*alternate 轮流执行*/
+				-webkit-animation-direction: alternate;
+				/*动画执行 次数*/
+				/*infinte 无线执行*/
+				-webkit-animation-iteration-count: infinite;
+				
+			}
+			
+			/*动画关键帧*/
+			@-webkit-keyframes ball{
+				0%{
+					background: red;	
+					
+				}
+				35%{
+					background: green;
+					-webkit-transform: translateX(400px);
+				}
+				
+				70%{
+					background: blue;
+					-webkit-transform:translate(200px,340px);
+				}
+				100%{
+					background: red;
+					-webkit-transform: translate(0,0);
+				}
+				
+			}
+
+
+
+						
+		</style>
+	</head>
+	<body>
+		<div ></div>
+	</body>
+</html>

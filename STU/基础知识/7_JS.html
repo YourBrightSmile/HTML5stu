@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+
+	</head>
+
+	<body>
+		<div id="demo" class="demo"></div>
+		<div class="demo"></div>
+
+		<input id="num1" type="text" />
+		<span>+</span>
+		<input type="text" id="num2" />
+		<input id="btn" type="button" value="=" />
+		<span id="sum"></span>
+
+		<script>
+			//通过id获取元素
+			var demoId = document.getElementById("demo");
+			//alert("元素div:"+demoId);
+
+			//通过class获取元素
+			var demoClass = document.getElementsByClassName("demo")
+			//浏览器开发者工具打印
+			console.log(demoClass);
+
+			//数组可以存储任意属性值
+			var arr = ["高考复习资料", 1, 2, 3, 4, "aa", true, "XX老师"];
+			//在元素中插入文本内容
+			demoClass[0].innerText = arr[7]
+			console.log(arr);
+
+			//设置class
+			demoId.className = "freestyle";
+
+
+			//设置CSS
+			demoId.style.cssText = "width: 200px;height: 100px;position: relative;"
+			demoId.style.background = "red";
+
+			//函数:封装一个获取id的方法
+			function getId(id) {
+				return document.getElementById(id)
+			}
+			var num1 = getId("num1");
+			var num2 = getId("num2");
+			var btn = getId("btn");
+			var sum = getId("sum");
+			
+			btn.onclick=function(){
+				//将num1和num2中的值解析成浮点数
+				//parseFloat 将字符串转换为浮点数
+				var n1 = parseFloat(num1.value);
+				var n2 = parseFloat(num2.value);
+				sum.innerText= n1+n2;
+				
+			}
+			
+			
+		</script>
+	</body>
+
+</html>

@@ -1,0 +1,371 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			* {
+				margin: 0;
+				padding: 0;
+			}
+			
+			body {
+				height: 100%;
+				width: 100%;
+				background-image: url(img/3.jpg);
+				background-size: cover;
+				
+			}
+			
+			canvas {
+				display: block;
+			}
+				
+			img{
+				position: absolute;
+				width: 100%;
+				height: 100%;
+				background-size: 50%;
+				z-index: -1 ;
+			}
+			.gg{
+				position: absolute;
+				width: 200px;
+				height: 200px;
+				border-radius: 100px;
+				background: white;
+				margin: auto;
+				bottom: 10px;
+				left: 0;
+				right: 0;
+				text-align: center;
+				line-height: 200px;
+				font-family: "微软雅黑";
+				font-size: 40px;
+				display: none;
+				cursor: pointer;
+			}
+			.mainPage{
+				position: absolute;
+				width: 300px;
+				height: 50px;
+				background: white;
+				border-radius: 20px 0 20px;
+				margin: auto;
+				bottom: 50px;
+				right: 50px;
+				text-align: center;
+				line-height: 50px;
+				font-family: "微软雅黑";
+				font-size: 30px;
+				cursor: pointer;
+				display: none;
+			}
+			.message{
+				position: absolute;
+				width: 400px;
+				height: 50px;
+				color: white;
+				margin: auto;
+				bottom: 100px;
+				top: 0;
+				left: 0;
+				right: 0;
+				text-align: center;
+				line-height: 50px;
+				font-size: 30px;
+				display: none;
+			}
+		</style>
+	</head>
+
+	<body>
+		<div class="main">
+			<img src="img/3.jpg" />
+			<canvas id="canvas"></canvas>
+		</div>
+		<div class="message">
+			SillyB?????????????????????
+			
+		</div>
+		<div class="gg">Restart?</div>
+		<div class="mainPage">GOTO MainPage?</div>
+	</body>
+	<script type="text/javascript" src="js/jquery-2.1.0.js"></script>
+	<script>
+		var canvas = document.getElementById("canvas");
+		//取出绘图工具
+		var ctx = canvas.getContext("2d");
+
+		canvas.height = window.innerHeight;
+		canvas.width = window.innerWidth;
+
+		//判断空格键是否按下
+		var isPress = false;
+		//判断下落运动是否停止
+		var isStop = false;
+		//记录得分和分数前缀
+		var maxScore = 0;	
+		var curScore = 0;
+		var pre="0000000";
+		//障碍物的移动速度
+		var enemySpeed = -4;
+		//游戏定时器
+		var gameTimer;
+		
+		init();
+
+		function init() {
+			//初始化并存储要打印的404
+			var strArr = [];
+			var str = "404NotFound";
+			for(var i=0;i<str.length;i++){
+				var w = new Word(str[i], 300+i*70, 200,100,canvas.height/2+200);
+				w.color="#D1EEEE";
+				strArr.push(w);
+			}
+			
+			$(".mainPage").css({"display":"block","z-index":"2"});
+			mainTimer = setInterval(function() {
+				ctx.clearRect(0, 0, window.innerWidth, window.innerHeight);
+
+				for(var i = 0; i < strArr.length; i++) {
+					strArr[i].drawSelf();
+					strArr[i].moveDownG();
+				}
+				
+			}, 20);
+			
+			document.onkeydown = function(event) {
+					if(event.keyCode == 32) {
+						clearInterval(mainTimer);
+						$(".mainPage").css({"display":"none","z-index":"-1"});
+						gameStart();
+					}
+			}
+			
+			//接收游戏重新开始的点击事件
+			$(".gg").click(function(){
+				$(".main").css({"filter":"blur(0px)"});
+				$(".gg,.mainPage,.message").css({"display":"none","z-index":"-1"});
+				gameStart();
+			});
+			
+			//接收去主页的点击事件
+			$(".mainPage").click(function(){
+				window.location="http://www.acfun.cn";
+			});
+		}
+		
+		
+		
+		function gameStart() {
+			//初始化player
+			var player = [];
+			var str = "404";
+			for(var i=0;i<str.length;i++){
+				player.push(new Word(str[i], 500+i*60, 200,100,395));				
+			}
+			
+			//开始游戏 
+			gameTimer= setInterval(function(){
+				ctx.clearRect(0, 0, window.innerWidth, window.innerHeight);
+				paintLine(0,400,2000,400);
+				
+				for(var i = 0; i < player.length; i++) {
+						player[i].drawSelf();
+						player[i].moveDown();
+					}
+				drawScore();
+				drawEnemy();
+				collListen();
+				
+				if(isStop){
+					//修复停止文本的位置
+					for(var i = 0; i < player.length; i++) {
+						player[i].y = 395;
+					}
+				}
+				
+			},10);
+			
+			
+			
+			//分数打印
+			function drawScore(){
+				curScore+=0.1;
+				//当分数到一定程度时提高障碍物移动速度
+				if(curScore>100){
+					enemySpeed =-5;
+				}else if(enemySpeed>500){
+					enemySpeed =-6;
+				}else if(enemySpeed>1000){
+					enemySpeed =-7;
+				}
+				//使用Math.floor降低分数的提高速度
+				str= "cur:"+(pre+Math.floor(curScore)).substr(-6)+"  max:"+(pre+maxScore).substr(-6);
+				ctx.beginPath();
+				ctx.font="20px 微软雅黑";
+				ctx.fillStyle = "white";
+				ctx.fillText(str, canvas.width-450, 30);
+				ctx.closePath();
+				
+			}
+			
+			//初始化用作障碍物对象数组
+			var eneArr = [];
+			var strEne = "NOTFOUND";
+			for(var i=0;i<strEne.length;i++){
+				var w = new Word(strEne[i],canvas.width+i*500+Math.floor(Math.random()*100),395,100,canvas.height/2+200)
+				w.color = randomColor();
+				eneArr.push(w);
+			}
+			
+			
+			//绘制障碍物
+			function drawEnemy(){
+				
+				for(var i=0;i<eneArr.length;i++){
+					eneArr[i].drawSelf();
+					eneArr[i].moveLeft(enemySpeed);
+					if(eneArr[i].x<0){
+						eneArr[i].x = canvas.width+5*500+Math.floor(Math.random()*100);
+  					}
+				}
+			}
+			
+			//碰撞监听
+			function collListen(){
+				
+				for(var i=0;i<eneArr.length;i++){
+					if(player[player.length-1].x+50>eneArr[i].x && player[0].x<eneArr[i].x && player[player.length-1].y+70 >eneArr[i].y){
+						clearInterval(gameTimer);
+						$(".main").css({"filter":"blur(6px)"});
+						$(".gg,.mainPage").css({"display":"block","z-index":"2"});
+						if(Math.floor(curScore)<20){
+							$(".message").css({"display":"block","z-index":"2"});
+						}
+						//记录最高分
+						if(Math.floor(curScore)>maxScore)maxScore=Math.floor(curScore);
+						curScore=0;
+					}
+				}
+				
+				
+			}
+			
+			
+			
+			//空格监听
+			document.onkeydown = function(event) {
+				if(!isPress)keyListening(event.keyCode,player);
+				
+			}
+			
+		}
+
+		//文本字符类
+		function Word(word, x, y,fontSize,bottom) {
+			this.x = x;
+			this.y = y;
+	
+			//下落的底部位置
+			this.bottom = bottom;
+			this.speedY = 10;
+			this.g = 0.3;
+			this.fontSize = fontSize;
+			
+
+			this.drawSelf = function() {
+					ctx.beginPath();
+					ctx.font = fontSize + "px 微软雅黑";
+					ctx.fillStyle = this.color;
+					ctx.fillText(word, this.x, this.y);
+					ctx.closePath();
+
+				}
+			
+			
+			//下落停止
+			this.moveDown = function(){
+				if(!isStop) {
+					this.y += this.speedY+1;
+					this.speedY += this.g;
+				}
+
+				if(this.y > this.bottom && !isStop) {
+					this.speedY = 0;
+					this.color = randomColor();
+					isStop = true;
+					isPress =  false;
+				}
+			}
+			
+			//有反弹的下落运动
+			this.moveDownG = function() {
+				if(!isStop) {
+					this.y += this.speedY;
+					this.speedY += this.g;
+				}
+
+				if(this.y > this.bottom && !isStop) {
+					this.speedY = -Math.floor(this.speedY * 3 / 4);
+					this.color = randomColor();
+					if(this.speedY == -2) {
+						this.speedY = 0;
+						isStop = true;
+						isPress =  false;
+					}
+				}
+			}
+			//jump运动方法
+			this.jump = function(){
+				this.speedY = -12;
+				this.color = randomColor();
+				isStop = false;
+			}
+			
+			//向左移动方法
+			this.moveLeft = function(enemySpeed) {
+				this.x += enemySpeed;
+			}
+		}
+
+		function paintLine(x,y,x1,y1) {
+			ctx.beginPath();
+			ctx.moveTo(x, y);
+			ctx.lineTo(x1, y1);
+			ctx.stroke();
+			ctx.closePath();
+
+			ctx.beginPath();
+			ctx.stroke();
+			ctx.strokeStyle = "darkgray";
+			ctx.closePath();
+		}
+
+		//监听键盘事件事件
+		function keyListening(keycode,obj) {
+			isPress = true;
+			switch(keycode) {
+				case 32:
+					for(var i = 0; i < obj.length; i++) {
+						obj[i].jump();
+					}
+					break;
+				default:
+					break;
+			}
+		}
+		
+		
+		
+		
+		//产生随机颜色
+		function randomColor() {
+			return '#' + Math.floor(Math.random() * 16777215).toString(16);
+		}
+	</script>
+
+</html>
